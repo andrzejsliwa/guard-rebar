@@ -4,7 +4,7 @@ TODO: Write a gem description
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's Guardfile:
 
     notification :emacs
 
@@ -12,10 +12,6 @@ Add this line to your application's Gemfile:
       watch(%r{src/.*?.erl})
       watch(%r{test/.*?.erl})
     end
-
-Or initialize repo:
-
-    bundle guard init rebar
 
 And then execute:
 
