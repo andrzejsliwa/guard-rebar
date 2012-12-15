@@ -4,6 +4,20 @@ TODO: Write a gem description
 
 ## Installation
 
+Add this line to your application's Gemfile:
+
+    gem "guard-rebar"
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install guard-rebar
+
+## Configuration
+
 Add this line to your application's Guardfile:
 
     notification :emacs
@@ -13,13 +27,18 @@ Add this line to your application's Guardfile:
       watch(%r{test/.*?.erl})
     end
 
-And then execute:
+    # or/and ...
 
-    $ bundle
+    guard 'rebar-compile', all_on_start: true do
+      watch(%r{src/.*?.erl})
+      watch(%r{test/.*?.erl})
+    end
 
-Or install it yourself as:
+    # or/and ...
 
-    $ gem install guard-rebar
+    guard 'rebar-deps', all_on_start: true do
+      watch(%r{rebar?.config})
+    end
 
 ## Usage
 

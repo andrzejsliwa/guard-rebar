@@ -1,7 +1,7 @@
 require 'guard/guard'
 
 module Guard
-  class RebarEunit < Guard
+  class RebarDeps < Guard
 
     def initialize(watchers = [], options = {})
       super
@@ -13,24 +13,18 @@ module Guard
     end
 
     def run_all
-      cmd = "rebar eunit #{handle_skip_deps}"
+      cmd = "rebar get-deps"
       UI.info "#{cmd}"
       handle_output(`#{cmd}`)
     end
 
     def run_on_change(paths = [])
-      suites = []
       paths.each do |path|
         UI.info "changed: #{path}"
-        if suite = path.match(%r{.*?/([^.].*?)_tests?.erl$})
-          suites << suite[1]
-        elsif suite = path.match(%r{.*?/([^.].*?)?.erl$})
-          suites << suite[1]
-        end
       end
-      cmd = "rebar eunit #{handle_skip_deps}suites=#{suites.join(",")}"
+      cmd = "rebar update-deps"
       UI.info "#{cmd}"
-      handle_output(`#{cmd}`, suites.join(" "))
+      handle_output(`#{cmd}`)
     end
 
     def handle_output(output, suite = nil)
@@ -44,12 +38,8 @@ module Guard
       end
     end
 
-    def handle_skip_deps
-      options[:skip_deps] ? "skip_deps=true" : ""
-    end
-
     def title
-      "Rebar EUnit: #{directory_name}"
+      "Rebar Deps: #{directory_name}"
     end
 
     def directory_name

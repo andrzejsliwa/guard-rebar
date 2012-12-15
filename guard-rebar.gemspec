@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["andrzej.sliwa@gmail.com"]
   gem.homepage      = "http://github.com/andrzejsliwa/guard-rebar"
 
-  gem.add_dependency 'guard'
+  gem.add_dependency 'guard', '~> 1.5.4'
 
   gem.files         = Dir.glob('{lib}/**/*') + %w[LICENSE README.md]
   gem.require_paths = ["lib"]
