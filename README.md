@@ -8,6 +8,15 @@ Add this line to your application's Gemfile:
 
     gem "guard-rebar"
 
+Example Gemfile should looks like:
+
+    source 'http://rubygems.org'
+
+    group :development do
+      gem "guard-rebar"
+      gem "rb-fsevent", require: false # for macosx
+    end
+
 And then execute:
 
     $ bundle
@@ -22,14 +31,14 @@ Add this line to your application's Guardfile:
 
     notification :emacs
 
-    guard 'rebar-eunit', all_on_start: true, skip_deps: true do
+    guard 'rebar-compile', all_on_start: true do
       watch(%r{src/.*?.erl})
       watch(%r{test/.*?.erl})
     end
 
     # or/and ...
 
-    guard 'rebar-compile', all_on_start: true do
+    guard 'rebar-eunit', all_on_start: true, skip_deps: true do
       watch(%r{src/.*?.erl})
       watch(%r{test/.*?.erl})
     end
@@ -39,6 +48,9 @@ Add this line to your application's Guardfile:
     guard 'rebar-deps', all_on_start: true do
       watch(%r{rebar?.config})
     end
+
+Just remember if you have same pattern in multiple watch definitions then
+order of guards definition is important (better is compile first and later run eunit).
 
 ## Usage
 
