@@ -54,7 +54,25 @@ order of guards definition is important (better is compile first and later run e
 
 ## Usage
 
-TODO: Write usage instructions here
+Just call:
+
+    $ guard -i
+    15:56:11 - INFO - Guard uses Emacs to send notifications.
+    15:56:11 - INFO - Guard is now watching at '/Users/andrzejsliwa/erlang_learning'
+    15:56:11 - INFO - rebar get-deps
+    nil
+    15:56:12 - INFO - ==> lager (get-deps)
+    > [#D41A719BA017] ==> erlang_learning (get-deps)
+    > [#D41A719BA017] ==> rel (get-deps)
+    > [#D41A719BA017] ==> erlang_learning (get-deps)
+    15:56:12 - INFO - rebar compile skip_deps=true
+    nil
+    15:56:12 - INFO - ==> erlang_learning (compile)
+    > [#D41A719BA017] ==> rel (compile)
+    > [#D41A719BA017] ==> erlang_learning (compile)
+    15:56:12 - INFO - rebar eunit skip_deps=true
+    nil
+    15:56:13 - INFO - ==> erlang_learning (eunit)
 
 ## Contributing
 
