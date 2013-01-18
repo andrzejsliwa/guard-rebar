@@ -39,7 +39,7 @@ module Guard
     end
 
     def handle_skip_deps
-      options[:skip_deps] ? "skip_deps=true" : ""
+      options[:skip_deps] ? "skip_deps=true " : ""
     end
 
     def title
