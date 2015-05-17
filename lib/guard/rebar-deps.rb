@@ -1,9 +1,9 @@
-require 'guard/guard'
+require 'guard/plugin'
 
 module Guard
-  class RebarDeps < Guard
+  class RebarDeps < Plugin
 
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       super
       options[:skip_deps] = true if options[:skip_deps].nil?
     end
